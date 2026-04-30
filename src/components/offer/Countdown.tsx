@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Zap } from "lucide-react";
 import { useCountdown } from "@/hooks/useCountdown";
 import { OFFER_DEADLINE } from "@/config/offer";
@@ -21,10 +22,11 @@ type Props = { onExpired: () => void };
 export const Countdown = ({ onExpired }: Props) => {
   const { hours, minutes, seconds, expired } = useCountdown(OFFER_DEADLINE);
 
-  if (expired) {
-    onExpired();
-    return null;
-  }
+  useEffect(() => {
+    if (expired) onExpired();
+  }, [expired, onExpired]);
+
+  if (expired) return null;
 
   return (
     <section className="container">
