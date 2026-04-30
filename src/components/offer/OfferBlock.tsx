@@ -1,78 +1,86 @@
-import { Tag, Gift, ClipboardList, Crown } from "lucide-react";
+import { Tag, Gift, ClipboardList, CreditCard, Sparkles } from "lucide-react";
+import { Reveal } from "./Reveal";
+import { SectionHeader } from "./SectionHeader";
 
 export const OfferBlock = () => {
   return (
-    <section className="container">
-      <div className="glow-card-strong p-6 sm:p-8 lg:p-10 animate-pulse-glow">
-        <header className="flex items-center gap-3 mb-6">
-          <Tag className="w-8 h-8 text-primary" />
-          <div>
-            <p className="font-display text-lg sm:text-xl uppercase text-muted-foreground">
-              A Oferta
-            </p>
-            <h2 className="font-display text-3xl sm:text-4xl uppercase text-primary text-glow">
-              O Dev Ficou Maluco
-            </h2>
-          </div>
-        </header>
+    <section className="container py-16 md:py-24">
+      <Reveal>
+        <SectionHeader
+          step="Capítulo 3"
+          icon={Tag}
+          title="A Oferta"
+          highlight="O Dev Ficou Maluco"
+        />
+      </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left: items */}
-          <div className="space-y-4">
-            <div className="rounded-xl border border-primary/40 bg-secondary/40 p-4 flex gap-3">
-              <ClipboardList className="w-6 h-6 text-primary shrink-0 mt-1" />
+      <div className="max-w-4xl mx-auto">
+        <Reveal delay={100}>
+          <p className="text-lg text-muted-foreground leading-relaxed text-center mb-8">
+            Então vamos para a oferta:
+          </p>
+        </Reveal>
+
+        {/* Itens da oferta */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+          <Reveal delay={200} variant="left">
+            <div className="glow-card p-6 h-full flex gap-4">
+              <ClipboardList className="w-8 h-8 text-primary shrink-0" />
               <div>
                 <p className="text-sm text-muted-foreground">
                   Cada guia sairá no valor fixo de
                 </p>
-                <p className="font-display text-2xl text-primary">R$ 197</p>
+                <p className="font-display text-4xl text-primary text-glow mt-1">
+                  R$ 197
+                </p>
               </div>
             </div>
-            <div className="rounded-xl border border-primary/40 bg-secondary/40 p-4 flex gap-3">
-              <Gift className="w-6 h-6 text-primary shrink-0 mt-1" />
-              <p className="text-sm text-muted-foreground leading-relaxed">
+          </Reveal>
+
+          <Reveal delay={300} variant="right">
+            <div className="glow-card p-6 h-full flex gap-4">
+              <Gift className="w-8 h-8 text-primary shrink-0" />
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Sua landing page (com o seu trabalho, ebook e etc) sairá como{" "}
-                <span className="text-primary font-semibold">BÔNUS</span> pelo
-                aceite dessa oferta. Não haverá custos.
+                <span className="text-primary font-bold uppercase">Bônus</span>{" "}
+                pelo aceite dessa oferta. Não haverá custos.
               </p>
             </div>
-          </div>
+          </Reveal>
+        </div>
 
-          {/* Center: prices */}
-          <div className="text-center lg:px-4">
-            <p className="text-muted-foreground">Valor total do projeto:</p>
-            <p className="font-display text-5xl sm:text-6xl text-primary text-glow my-2">
+        {/* Preço total */}
+        <Reveal delay={400} variant="scale">
+          <div className="glow-card-strong p-8 sm:p-12 text-center animate-pulse-glow">
+            <p className="text-sm sm:text-base uppercase tracking-widest text-muted-foreground">
+              Valor total do projeto
+            </p>
+            <p className="font-display text-6xl sm:text-7xl md:text-8xl text-primary text-glow my-3">
               R$ 4.925,00
             </p>
-            <p className="text-sm text-muted-foreground">
-              Que poderá ser dividido em até 5x sem juros no cartão.
-              <br />
-              Ou acima disso, com o juros da maquininha.
-            </p>
-
-            <div className="mt-5 rounded-xl border-2 border-primary bg-primary/10 px-4 py-4">
-              <p className="font-display text-3xl sm:text-4xl text-primary">
-                R$ 8.497,00
-              </p>
-              <p className="text-xs sm:text-sm text-foreground/80 mt-1">
-                É O VALOR DE DESCONTO E A ECONOMIA SE A OFERTA FOR ACEITA
-                DENTRO DAS PRÓXIMAS 24 HORAS.
-              </p>
-            </div>
-          </div>
-
-          {/* Right: detail */}
-          <div className="rounded-xl border border-primary/40 bg-secondary/40 p-5">
-            <Crown className="w-7 h-7 text-primary mb-3" />
-            <h3 className="font-display text-lg uppercase mb-2">
-              Detalhe muito importante:
-            </h3>
-            <p className="text-muted-foreground leading-relaxed text-sm">
-              A qualidade não cairá nem um pouco. Pelo contrário: você terá
-              total exclusividade minha no seu projeto.
+            <p className="flex items-center justify-center gap-2 text-sm sm:text-base text-muted-foreground">
+              <CreditCard className="w-5 h-5" />
+              Em até 5x sem juros no cartão. Ou acima disso, com o juros da
+              maquininha.
             </p>
           </div>
-        </div>
+        </Reveal>
+
+        {/* Desconto */}
+        <Reveal delay={500} variant="scale">
+          <div className="mt-6 rounded-2xl border-2 border-dashed border-primary bg-primary/5 p-6 sm:p-8 text-center">
+            <p className="flex items-center justify-center gap-2 text-sm uppercase tracking-widest text-primary mb-2">
+              <Sparkles className="w-4 h-4" /> Sua economia <Sparkles className="w-4 h-4" />
+            </p>
+            <p className="font-display text-5xl sm:text-6xl text-primary text-glow">
+              R$ 8.497,00
+            </p>
+            <p className="text-sm sm:text-base text-foreground/90 mt-3 max-w-xl mx-auto">
+              É o valor de desconto e a economia se a oferta for aceita dentro
+              das <span className="text-primary font-semibold">próximas 24 horas.</span>
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

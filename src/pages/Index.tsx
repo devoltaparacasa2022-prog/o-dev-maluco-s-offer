@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Hero } from "@/components/offer/Hero";
-import { ProjectAndWhy } from "@/components/offer/ProjectAndWhy";
+import { ProjectSection } from "@/components/offer/ProjectSection";
+import { WhySection } from "@/components/offer/WhySection";
 import { OfferBlock } from "@/components/offer/OfferBlock";
+import { QualitySection } from "@/components/offer/QualitySection";
 import { NerdBanner } from "@/components/offer/NerdBanner";
 import { OfferSummary } from "@/components/offer/OfferSummary";
 import { Countdown } from "@/components/offer/Countdown";
@@ -15,15 +17,16 @@ const Index = () => {
 
   return (
     <main className="min-h-screen pb-16">
+      {/* Story flow — read in order */}
       <Hero />
-      <div className="space-y-10 md:space-y-14">
-        <ProjectAndWhy />
-        <OfferBlock />
-        <NerdBanner />
-        <OfferSummary />
-        <Countdown onExpired={() => setExpired(true)} />
-        <CTAButton />
-      </div>
+      <ProjectSection />
+      <WhySection />
+      <OfferBlock />
+      <QualitySection />
+      <NerdBanner />
+      <OfferSummary />
+      <Countdown onExpired={() => setExpired(true)} />
+      <CTAButton />
     </main>
   );
 };
