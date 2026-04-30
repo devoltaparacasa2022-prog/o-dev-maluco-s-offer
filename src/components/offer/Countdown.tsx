@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Zap } from "lucide-react";
 import { useCountdown } from "@/hooks/useCountdown";
 import { OFFER_DEADLINE } from "@/config/offer";
+import { Reveal } from "./Reveal";
 
 const Cell = ({ value, label }: { value: string; label: string }) => (
   <div className="flex flex-col items-center">
@@ -29,7 +30,8 @@ export const Countdown = ({ onExpired }: Props) => {
   if (expired) return null;
 
   return (
-    <section className="container">
+    <section className="container py-16 md:py-20">
+      <Reveal variant="scale">
       <div className="text-center">
         <h2 className="flex items-center justify-center gap-3 font-display text-xl sm:text-2xl md:text-3xl uppercase">
           <Zap className="w-6 h-6 text-primary fill-primary" />
@@ -53,6 +55,7 @@ export const Countdown = ({ onExpired }: Props) => {
           Ao final do tempo, essa página e a oferta desaparecem.
         </p>
       </div>
+      </Reveal>
     </section>
   );
 };

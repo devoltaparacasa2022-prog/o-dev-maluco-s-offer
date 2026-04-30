@@ -1,9 +1,11 @@
 import { MessageCircle } from "lucide-react";
 import { WHATSAPP_LINK } from "@/config/offer";
+import { Reveal } from "./Reveal";
 
 export const CTAButton = () => {
   return (
-    <section className="container">
+    <section className="container py-10 md:py-16">
+      <Reveal variant="scale">
       <div className="flex justify-center">
         <a
           href={WHATSAPP_LINK}
@@ -20,6 +22,7 @@ export const CTAButton = () => {
           </span>
         </a>
       </div>
+      </Reveal>
     </section>
   );
 };

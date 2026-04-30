@@ -14,6 +14,9 @@ import {
   Monitor,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { Reveal } from "./Reveal";
+import { SectionHeader } from "./SectionHeader";
+import { PackageCheck } from "lucide-react";
 
 type Item = {
   icon: LucideIcon;
@@ -49,32 +52,37 @@ const items: Item[] = [
 
 export const OfferSummary = () => {
   return (
-    <section className="container">
-      <h2 className="font-display text-center text-2xl sm:text-3xl md:text-4xl uppercase mb-8">
-        Resumo da oferta:{" "}
-        <span className="text-primary">o que você vai receber</span>
-      </h2>
+    <section className="container py-16 md:py-24">
+      <Reveal>
+        <SectionHeader
+          step="Capítulo 4"
+          icon={PackageCheck}
+          title="Resumo da Oferta"
+        />
+        <p className="text-center text-lg text-muted-foreground -mt-4 mb-10">
+          O que você vai receber:
+        </p>
+      </Reveal>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
         {items.map(({ icon: Icon, title, description, emphasis }, i) => (
-          <div
-            key={i}
-            className="glow-card p-4 flex gap-3 items-start hover:border-primary/60 transition-colors"
-          >
-            <Icon className="w-6 h-6 text-primary shrink-0 mt-0.5" />
-            <div className="text-sm leading-snug">
-              <p
-                className={
-                  emphasis ? "text-primary font-semibold" : "text-foreground"
-                }
-              >
-                {title}
-              </p>
-              {description && (
-                <p className="text-muted-foreground mt-1">{description}</p>
-              )}
+          <Reveal key={i} delay={i * 60} variant="up">
+            <div className="glow-card p-4 h-full flex gap-3 items-start hover:border-primary hover:-translate-y-1 transition-all duration-300">
+              <Icon className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+              <div className="text-sm leading-snug">
+                <p
+                  className={
+                    emphasis ? "text-primary font-semibold" : "text-foreground"
+                  }
+                >
+                  {title}
+                </p>
+                {description && (
+                  <p className="text-muted-foreground mt-1">{description}</p>
+                )}
+              </div>
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>
